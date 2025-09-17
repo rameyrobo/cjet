@@ -1,7 +1,7 @@
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "CJECT",
+  title: "CJET",
   twitter: {
     card: "summary_large_image",
   },
