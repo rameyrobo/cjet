@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 export default function Web() {
   return (
     <>
-      <main className="min-h-screen bg-white dark:bg-gray-900 flex items-center justify-center">
+      <main className="min-h-screen bg-white dark:bg-gray-900 flex items-center justify-center overflow-x-hidden">
       <div className="mx-4 max-w-2xl text-center">
         <h1 className="text-9xl font-extrabold text-gray-900 dark:text-white">$CJET</h1>
         <CjetCard />
