@@ -6,10 +6,18 @@ import {
  } from "react-icons/fa";
 
 import { 
+  HiMiniSpeakerWave,
+  HiMiniSpeakerXMark, 
+} from "react-icons/hi2";
+
+
+import { 
     FaSquareXTwitter,
 } from "react-icons/fa6";
 
 export const iconLibrary: Record<string, IconType> = {
+  speakeron: HiMiniSpeakerWave,
+  speakeroff: HiMiniSpeakerXMark,
   instagram: FaInstagram,
   telegram: FaTelegramPlane,
   twitter: FaSquareXTwitter,

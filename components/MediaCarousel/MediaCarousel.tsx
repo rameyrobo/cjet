@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import { iconLibrary } from "../../resources/icons";
 
 const media = [
   {
@@ -51,6 +52,11 @@ const media = [
 export default function MediaCarousel() {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
+  const [iosUnmuteReady, setIosUnmuteReady] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const current = media[index];
 
   useEffect(() => {
     if (!current || paused) return;
@@ -63,9 +69,10 @@ export default function MediaCarousel() {
     return () => {
       if (timer) clearInterval(timer);
     };
-  }, [index, paused]);
+  }, [index, paused, current]);
 
-  const current = media[index];
+  // iOS detection
+  const isIOS = typeof window !== "undefined" && /iPad|iPhone|iPod/.test(navigator.userAgent);
 
   if (!current) return null;
 
@@ -82,12 +89,27 @@ export default function MediaCarousel() {
     setIndex((i) => (i + 1) % media.length);
   };
 
+  // For iOS, only allow unmuting after direct tap on video
+  const handleVideoTap = () => {
+    if (isIOS && isMuted) {
+      setIosUnmuteReady(true);
+      setIsMuted(false);
+    }
+  };
+
+  // Universal mute/unmute button
+  const handleMuteToggle = () => {
+    if (isIOS && !iosUnmuteReady) return; // Block unmute until tap
+    setIsMuted((m) => !m);
+  };
+
   return (
-    <div className="h-full md:h-dvh w-full flex items-center justify-center relative">
+    <div className="h-full md:h-dvh w-full flex items-center justify-center relative pb-20 md:pb-0">
       {/* Left arrow */}
       <button
         onClick={goLeft}
-        className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-black/40 text-white rounded-full w-10 h-10 flex items-start md:items-center justify-center hover:bg-black/70 cursor-pointer"
+        type="button"
+        className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-black/40 text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-black/70 cursor-pointer"
         aria-label="Previous"
       >
         &#60;
@@ -105,23 +127,42 @@ export default function MediaCarousel() {
             style={{ objectFit: "contain" }}
           />
         ) : (
-          <video
-            key={current.src}
-            height={current.height}
-            width={current.width}
-            src={current.src}
-            controls
-            autoPlay
-            loop={false}
-            muted
-            className="object-contain rounded-2xl max-h-[100vh] w-lvw animate-duration-500 animate-delay-200 animate-ease-in-out"
-            onEnded={handleVideoEnd}
-          />
+          <div className="relative w-full flex flex-col items-center">
+            {/* Speaker icon button */}
+            <button
+              type="button"
+              onClick={handleMuteToggle}
+              className="absolute top-2 left-2 z-20 text-2xl bg-black/60 text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-black/80"
+              aria-label={isMuted ? "Unmute" : "Mute"}
+              disabled={isIOS && !iosUnmuteReady}
+            >
+              {isMuted
+                ? iconLibrary.speakeroff && <span aria-hidden="true"><iconLibrary.speakeroff size={24} /></span>
+                : iconLibrary.speakeron && <span aria-hidden="true"><iconLibrary.speakeron size={24} /></span>
+              }
+            </button>
+            <video
+              key={current.src}
+              ref={videoRef}
+              height={current.height}
+              width={current.width}
+              src={current.src}
+              autoPlay
+              loop={false}
+              muted={isMuted}
+              playsInline
+              controls={false}
+              className="object-contain rounded-2xl max-h-[100vh] w-lvw animate-duration-500 animate-delay-200 animate-ease-in-out"
+              onEnded={handleVideoEnd}
+              onClick={handleVideoTap}
+            />
+          </div>
         )}
       </div>
       {/* Right arrow */}
       <button
         onClick={goRight}
+        type="button"
         className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-black/40 text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-black/70 cursor-pointer"
         aria-label="Next"
       >
