@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { iconLibrary, IconName } from "../../resources/icons";
+import { iconLibrary } from "../../resources/icons";
 
 const InstagramIcon = iconLibrary.instagram;
 const TwitterIcon = iconLibrary.twitter;
@@ -55,7 +55,7 @@ export default function CjetCard() {
   if (!pair) return <div>Loading CJET data...</div>;
 
   return (
-    <div className="max-w-md mx-auto rounded-2xl shadow-lg p-6 bg-white">
+    <div className="max-w-sm ml-0 rounded-2xl shadow-lg p-6 bg-stone-100 opacity-95 animate-fade-up animate-duration-1000 animate-delay-600 animate-ease-in-out">
       <div className="flex items-center gap-4">
         <div className="w-12 h-12 rounded-full overflow-hidden">
           <Image
@@ -85,7 +85,7 @@ export default function CjetCard() {
           href="https://pump.fun/coin/GP5AWXs8F3MKa5hXkJ4k3w6KKrbeiNwFDBmcjxhppump"
           target="_blank"
           rel="noopener noreferrer"
-          className="px-4 py-2 rounded-xl bg-indigo-600 text-white hover:bg-indigo-700"
+          className="px-4 py-2 rounded-xl bg-indigo-600 text-white hover:bg-indigo-700 text-center"
         >
           Buy CJET on Pump
         </a>
@@ -93,7 +93,7 @@ export default function CjetCard() {
           href="https://moonshot.com/GP5AWXs8F3MKa5hXkJ4k3w6KKrbeiNwFDBmcjxhppump"
           target="_blank"
           rel="noopener noreferrer"
-          className="px-4 py-2 rounded-xl bg-indigo-600 text-white hover:bg-indigo-700"
+          className="px-4 py-2 rounded-xl bg-indigo-600 text-white hover:bg-indigo-700 text-center"
         >
           Buy CJET on Moonshot
         </a>
@@ -104,7 +104,7 @@ export default function CjetCard() {
             href={site.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-4 py-2 rounded-xl bg-[#E1306C] text-white hover:bg-black"
+            className="px-4 py-2 rounded-xl bg-[#E1306C] text-white hover:bg-black text-center"
           >
             {/* IG icon for Instagram links */}
             {site.label.toLowerCase().includes("instagram") && InstagramIcon && (
@@ -119,7 +119,7 @@ export default function CjetCard() {
             href={social.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-4 py-2 rounded-xl bg-black text-white hover:bg-blue-600 capitalize"
+            className="px-4 py-2 rounded-xl bg-black text-white hover:bg-blue-600 capitalize text-center"
           >
             {/* Twitter icon for Twitter links */}
             {social.type.toLowerCase() === "twitter" && TwitterIcon && (
@@ -136,7 +136,7 @@ export default function CjetCard() {
           href="https://t.me/+FyJ3DWT4zzQwMjQx"
           target="_blank"
           rel="noopener noreferrer"
-          className="px-4 py-2 rounded-xl bg-blue-500 text-white hover:bg-blue-600 capitalize"
+          className="px-4 py-2 rounded-xl bg-blue-500 text-white hover:bg-blue-600 capitalize text-center"
         >
           {TelegramIcon && <span className="inline-block mr-2 align-middle"><TelegramIcon /></span>}
           Telegram
