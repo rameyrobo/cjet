@@ -1,4 +1,6 @@
 @import 'tailwindcss';
+@import "tailwindcss-animated";
+
 
 /*
   The default border color has changed to `currentColor` in Tailwind CSS v4,
@@ -16,4 +18,9 @@
   ::file-selector-button {
     border-color: var(--color-gray-200, currentColor);
   }
+}
+
+.h1Size {
+  font-size: clamp(3.5rem, -0.977rem + 9.326vw, 8rem);
+  line-height: .75;
 }
