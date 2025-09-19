@@ -6,45 +6,45 @@ const media = [
   {
     type: "image",
     src: "/assets/cjet.png",
-    alt: "$CJET skate action",
+    alt: "$CJET logo",
     width: 2000,
     height: 2000,
   },
   {
     type: "image",
     src: "/assets/joslin-family.png",
-    alt: "$CJET business",
+    alt: "Chris Joslin with his kids",
     width: 1489,
     height: 1900,
   },
   {
     type: "image",
     src: "/assets/thrasher-cover.png",
-    alt: "$CJET business",
+    alt: "Chris Joslin 360 flip down El Toro Thrasher cover",
     width: 1402,
     height: 1768,
   },
   {
     type: "video",
     src: "/assets/cheers.mp4",
-    alt: "$CJET video",
+    alt: "Joslin cheers to you",
     width: 1080,
     height: 1890,
   }, 
   {
     type: "video",
     src: "/assets/private-jet.mp4",
-    alt: "$CJET video",
+    alt: "Joslin in a private jet",
   }, 
   {
     type: "video",
     src: "/assets/music_video.mp4",
-    alt: "$CJET video",
+    alt: "Chris Joslin's music video",
   }, 
   {
     type: "video",
     src: "/assets/limo.mp4",
-    alt: "$CJET video",
+    alt: "Chris Joslin in a limo",
   },
 ];
 
