@@ -9,7 +9,7 @@ Years later, he came back stronger, and finally got his revenge. He landed the t
 
 This coin, **$CJET**, is a tribute to that moment and to the biggest 360 flip ever landed.
 
-The goal is simple: help skateboarders discover cryptocurrency, have fun, and maybe make some money along the way.
+The goal is simple: help skateboarders discover cryptocurrency, have fun, and maybe make build a community along the way.
 
 **$CJET** was created by **[Shrimpdaddy](https://www.instagram.com/shrimpdaddy/)**, a skateboarder and content creator. He is holding his bag and is not selling.
 
