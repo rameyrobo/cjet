@@ -19,6 +19,7 @@ Good luck to everyone who gets involved.
 export default function MarkdownSection() {
   const [rawHtml, setRawHtml] = useState("");
   const [visibleHtml, setVisibleHtml] = useState("");
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const parseMarkdown = async () => {
@@ -30,9 +31,21 @@ export default function MarkdownSection() {
       setRawHtml(processed);
     };
     parseMarkdown();
+
+    // Detect mobile (screen < 768px)
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
   useEffect(() => {
+    if (isMobile) {
+      setVisibleHtml(rawHtml);
+      return;
+    }
     let i = 0;
     const timer = setInterval(() => {
       i++;
@@ -45,7 +58,7 @@ export default function MarkdownSection() {
       if (i >= rawHtml.length) clearInterval(timer);
     }, 18);
     return () => clearInterval(timer);
-  }, [rawHtml]);
+  }, [rawHtml, isMobile]);
 
   return (
     <div className="prose prose-lg dark:prose-invert mb-8 text-left text-white flex flex-col items-start justify-start md:justify-center h-full">
