@@ -3,7 +3,12 @@ import "styles/tailwind.css"
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <head><link rel="icon" href="/assets/cjet.ico" type="image/x-icon" /></head>
+      <head>
+        <link rel="icon" href="/assets/cjet.ico" type="image/x-icon" />
+        <link rel="preconnect" href="https://fonts.googleapis.com"></link>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin></link>
+        <link href="https://fonts.googleapis.com/css2?family=Bowlby+One+SC&display=swap" rel="stylesheet"></link>
+        </head>
       <body>{children}</body>
     </html>
   )

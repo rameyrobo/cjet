@@ -21,6 +21,15 @@
 }
 
 .h1Size {
-  font-size: clamp(3.5rem, -0.977rem + 9.326vw, 8rem);
+  font-family: 'Bowlby One SC', serif;
+  font-size: clamp(4rem, -1.185rem + 29.63vw, 6.5rem);
   line-height: .75;
+  font-style: italic;
+  font-weight: 100;
+  color: #3dff00;
+}
+@media screen and (min-width: 768px) {
+  .h1Size {
+    font-size: clamp(2.938rem, -0.544rem + 7.254vw, 6.438rem);
+  }
 }
