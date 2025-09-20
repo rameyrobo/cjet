@@ -1,4 +1,7 @@
 import { Metadata } from "next"
+import { Bowlby_One_SC } from "next/font/google"
+
+const bowlby = Bowlby_One_SC({ subsets: ["latin"], weight: "400" });
 import CjetCard from "components/CjetCard/CjetCard";
 import MarkdownSection from "components/MarkdownSection/MarkdownSection";
 import MediaCarousel from "components/MediaCarousel/MediaCarousel";
@@ -20,7 +23,7 @@ export default function Web() {
     <main className="min-h-screen bg-gray-900 flex items-center justify-center overflow-x-hidden">
       <div className="w-full max-w-full grid grid-cols-1 max-h-dvh md:grid-cols-7 gap-0 md:gap-8 items-start py-6">
         <div className="flex flex-col items-center justify-center md:justify-center md:h-full px-4 col-span-3 md:col-span-2">
-          <h1 className="h1Size font-extrabold text-gray-900 text-white mb-6 animate-fade-up animate-duration-1000 animate-delay-400 animate-ease-in-out">$CJET</h1>
+          <h1 className={`h1Size font-extrabold text-gray-900 dark:text-white mb-6 animate-fade-up animate-duration-1000 animate-delay-400 animate-ease-in-out ${bowlby.className}`}>$CJET</h1>
           
           <CjetCard />
           <div className="mt-8 w-full max-w-sm md:ml-0">
