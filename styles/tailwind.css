@@ -21,10 +21,8 @@
 }
 
 .h1Size {
-  font-family: 'Bowlby One SC', serif;
   font-size: clamp(4rem, -1.185rem + 29.63vw, 6.5rem);
   line-height: .75;
-  font-style: italic;
   font-weight: 100;
   color: #3dff00;
 }
