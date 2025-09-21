@@ -88,7 +88,7 @@ export default function CjetCard() {
           <div className="text-base text-gray-600 font-medium mt-1">Integrations</div>
         </div> */}
         <div className="rounded-2xl bg-white shadow-md flex flex-col items-center justify-center py-5 px-4">
-          <div className="text-2xl font-extrabold text-gray-900">{pair.marketCap >= 1e6 ? "$" + (pair.marketCap)/1e6.toFixed(0) + "M" : "$" + pair.marketCap.toLocaleString()}</div>
+          <div className="text-2xl font-extrabold text-gray-900">{pair.marketCap >= 1e6 ? "$" + (pair.marketCap/1e6).toFixed(0) + "M" : "$" + pair.marketCap.toLocaleString()}</div>
           <div className="text-base text-gray-600 font-medium mt-1">Market Cap</div>
         </div>
         <div className="rounded-2xl bg-white shadow-md flex flex-col items-center justify-center py-5 px-4">
