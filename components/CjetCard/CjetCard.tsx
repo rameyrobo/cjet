@@ -13,6 +13,7 @@ interface PairData {
   priceUsd: string;
   liquidity: { usd: number };
   volume: { h24: number };
+  marketCap: number;
   info: {
     imageUrl: string;
     websites?: { label: string; url: string }[];
@@ -71,14 +72,34 @@ export default function CjetCard() {
         </h2>
       </div>
 
-      <p className="mt-4 text-lg">
-        💵 Price:{" "}
-        <span className="font-semibold">
-          ${Number(pair.priceUsd).toFixed(6)}
-        </span>
-      </p>
-      <p>📊 Liquidity: ${pair.liquidity.usd.toLocaleString()}</p>
-      <p>📈 24h Volume: ${pair.volume.h24.toLocaleString()}</p>
+      {/* Stats grid section */}
+      <div className="mt-6 grid grid-cols-2 gap-4">
+        {/* Each stat box 
+        <div className="rounded-2xl bg-white shadow-md flex flex-col items-center justify-center py-5 px-4">
+          <div className="text-2xl font-extrabold text-gray-900">41,913</div>
+          <div className="text-base text-gray-600 font-medium mt-1">Holders</div>
+        </div>
+        <div className="rounded-2xl bg-white shadow-md flex flex-col items-center justify-center py-5 px-4">
+          <div className="text-2xl font-extrabold text-gray-900">74,643</div>
+          <div className="text-base text-gray-600 font-medium mt-1">Followers</div>
+        </div>
+        <div className="rounded-2xl bg-white shadow-md flex flex-col items-center justify-center py-5 px-4">
+          <div className="text-2xl font-extrabold text-gray-900">64</div>
+          <div className="text-base text-gray-600 font-medium mt-1">Integrations</div>
+        </div> */}
+        <div className="rounded-2xl bg-white shadow-md flex flex-col items-center justify-center py-5 px-4">
+          <div className="text-2xl font-extrabold text-gray-900">{pair.marketCap >= 1e6 ? "$" + (pair.marketCap)/1e6.toFixed(0) + "M" : "$" + pair.marketCap.toLocaleString()}</div>
+          <div className="text-base text-gray-600 font-medium mt-1">Market Cap</div>
+        </div>
+        <div className="rounded-2xl bg-white shadow-md flex flex-col items-center justify-center py-5 px-4">
+          <div className="text-2xl font-extrabold text-gray-900">{pair.volume.h24 >= 1e6 ? "$" + (pair.volume.h24/1e6).toFixed(0) + "M" : "$" + pair.volume.h24.toLocaleString()}</div>
+          <div className="text-base text-gray-600 font-medium mt-1">Volume 24h</div>
+        </div>
+        <div className="rounded-2xl bg-white shadow-md flex flex-col items-center justify-center py-5 px-4">
+          <div className="text-2xl font-extrabold text-gray-900">{pair.liquidity.usd >= 1e6 ? "$" + (pair.liquidity.usd/1e6).toFixed(1) + "M" : "$" + pair.liquidity.usd.toLocaleString()}</div>
+          <div className="text-base text-gray-600 font-medium mt-1">DEX Liquidity</div>
+        </div>
+      </div>
 
       <div className="mt-4 flex flex-wrap justify-center gap-3">
         <a
