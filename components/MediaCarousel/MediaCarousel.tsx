@@ -104,7 +104,7 @@ export default function MediaCarousel() {
   };
 
   return (
-    <div className="h-full md:h-dvh w-full flex items-center justify-center relative pb-20 md:pb-0">
+    <div className="h-full lg:h-dvh w-full flex items-center justify-center relative pb-20 lg:pb-0">
       {/* Left arrow */}
       <button
         onClick={goLeft}

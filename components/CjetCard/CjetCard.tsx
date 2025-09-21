@@ -73,7 +73,7 @@ export default function CjetCard() {
       </div>
 
       {/* Stats grid section */}
-      <div className="mt-6 grid grid-cols-2 md:grid-cols-1 xl:grid-cols-2 gap-4">
+      <div className="mt-6 grid grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-4">
         {/* Each stat box 
         <div className="rounded-2xl bg-white shadow-md flex flex-col items-center justify-center py-5 px-4">
           <div className="text-2xl font-extrabold text-gray-900">41,913</div>
