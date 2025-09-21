@@ -61,7 +61,7 @@ export default function MarkdownSection() {
   }, [rawHtml, isMobile]);
 
   return (
-    <div className="prose prose-lg dark:prose-invert mb-8 text-left text-white flex flex-col items-start justify-start md:justify-center h-full">
+    <div className="prose prose-lg dark:prose-invert mb-8 text-left text-white flex flex-col items-start justify-start md:justify-center h-full px-4">
       <div dangerouslySetInnerHTML={{ __html: visibleHtml }} />
     </div>
   );
