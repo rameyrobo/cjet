@@ -10,7 +10,7 @@ export default function Song() {
       allowFullScreen
       allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
       loading="lazy"
-      className="animate-fade-up animate-duration-1000 animate-delay-1000 animate-ease-in-out"
+      className="animate-fade-up animate-duration-1000 animate-delay-1000 animate-ease-in-out mt-12"
     />
   );
 }

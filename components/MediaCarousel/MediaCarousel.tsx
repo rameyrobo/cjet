@@ -104,12 +104,12 @@ export default function MediaCarousel() {
   };
 
   return (
-    <div className="h-full lg:h-dvh w-full flex items-center justify-center relative pb-20 lg:pb-0">
+    <div className="h-auto w-full flex items-start justify-center relative pb-20 lg:pb-0 mt-2 lg:mt-32">
       {/* Left arrow */}
       <button
         onClick={goLeft}
         type="button"
-        className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-black/40 text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-black/70 cursor-pointer"
+        className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-black/40 text-white rounded-full w-10 h-10 flex align-self-center items-center justify-center hover:bg-black/70 cursor-pointer"
         aria-label="Previous"
       >
         &#60;
@@ -127,7 +127,7 @@ export default function MediaCarousel() {
             style={{ objectFit: "contain" }}
           />
         ) : (
-          <div className="relative w-full flex flex-col items-start">
+          <div className="relative w-full flex flex-col items-center">
             {/* Speaker icon button */}
             <button
               type="button"
