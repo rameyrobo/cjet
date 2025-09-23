@@ -136,7 +136,7 @@ export default function MediaCarousel() {
             <button
               type="button"
               onClick={handleMuteToggle}
-              className="absolute top-2 left-2 z-20 text-2xl bg-black/60 text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-black/80"
+              className="absolute top-2 left-2 z-20 text-2xl bg-black/60 text-white rounded-full w-10 h-10 flex items-center justify-center hover:bg-black/80 cursor-pointer"
               aria-label={isMuted ? "Unmute" : "Mute"}
               disabled={isIOS && !iosUnmuteReady}
             >
