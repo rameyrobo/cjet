@@ -1,8 +1,12 @@
 import { SolNetwork } from "@moralisweb3/common-sol-utils";
 import Moralis from "moralis";
 
-
 let moralisStarted = false;
+type PortfolioResult = {
+  address: string;
+  portfolio: unknown;
+};
+let cachedResults: PortfolioResult[] | null = null;
 
 export async function GET() {
   if (!moralisStarted) {
@@ -12,8 +16,14 @@ export async function GET() {
     moralisStarted = true;
   }
 
-  const network = SolNetwork.MAINNET;
+  if (cachedResults) {
+    return new Response(JSON.stringify(cachedResults), {
+      status: 200,
+      headers: { "content-type": "application/json" },
+    });
+  }
 
+  const network = SolNetwork.MAINNET;
   const addresses = [
     process.env.JOSLIN_ADDRESS,
     process.env.GIVING_ADDRESS,
@@ -30,7 +40,7 @@ export async function GET() {
       };
     })
   );
-
+  cachedResults = results;
   return new Response(JSON.stringify(results), {
     status: 200,
     headers: { "content-type": "application/json" },
