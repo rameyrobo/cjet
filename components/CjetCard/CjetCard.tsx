@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { Text } from "components/SiteText/MarkdownText";
 import { iconLibrary } from "../../resources/icons";
 
 const InstagramIcon = iconLibrary.instagram;
@@ -29,17 +30,17 @@ export default function CjetCard() {
 
     async function fetchAndSet() {
       try {
-        const res = await fetch("/api/cjet")
+        const res = await fetch("/api/dexscreener")
         if (!res.ok) throw new Error(`API error ${res.status}`)
         const json = (await res.json()) as PairData[] | { error?: string }
         if (Array.isArray(json) && json.length > 0) {
           const first = json[0]
           if (first && mounted) setPair(first)
         } else {
-          console.error("Unexpected CJET API response", json)
+          console.error("Unexpected Dexscreener API response", json)
         }
       } catch (err) {
-        console.error("Failed to fetch CJET data", err)
+        console.error("Failed to fetch Dexscreener data", err)
       }
     }
 
@@ -53,10 +54,10 @@ export default function CjetCard() {
     }
   }, [])
 
-  if (!pair) return <div>Loading CJET data...</div>;
+  if (!pair) return <div>Loading data...</div>;
 
   return (
-    <div className="max-w-sm ml-0 rounded-2xl shadow-lg p-6 bg-stone-100 opacity-95 animate-fade-up animate-duration-1000 animate-delay-600 animate-ease-in-out">
+    <div className="max-w-xl ml-0 rounded-2xl shadow-lg p-6 bg-stone-100 opacity-95 animate-fade-up animate-duration-1000 animate-delay-600 animate-ease-in-out">
       <div className="flex items-center gap-4">
         <div className="w-12 h-12 rounded-full overflow-hidden">
           <Image
