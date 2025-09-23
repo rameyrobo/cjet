@@ -41,7 +41,7 @@ export default function SocialMediaButtons() {
   }, []);
 
   return (
-    <div className="flex flex-wrap justify-start gap-3 absolute top-4 left-4 md:left-16 z-50">
+    <div className="flex flex-wrap justify-start gap-3 absolute top-4 left-14 lg:left-12 z-50">
       {/* Instagram website links */}
       {pair?.info.websites?.filter(site => site.label.toLowerCase().includes("instagram") && site.url !== "http://cjetcoin.com" && site.url !== "https://cjetcoin.com").map((site) => (
         <a

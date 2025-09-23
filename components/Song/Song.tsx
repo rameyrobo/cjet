@@ -1,5 +1,6 @@
 export default function Song() {
   return (
+    <div className="hidden lg:block">
     <iframe
       data-testid="embed-iframe"
       style={{ borderRadius: 12 }}
@@ -12,5 +13,6 @@ export default function Song() {
       loading="lazy"
       className="animate-fade-up animate-duration-1000 animate-delay-1000 animate-ease-in-out mt-12"
     />
+    </div>
   );
 }
