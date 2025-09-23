@@ -1,10 +1,10 @@
 "use client";
 import { marked } from "marked";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import WalletAddressButton from "components/Wallet/WalletAddressButton";
 
 // Helper to fetch wallet coin amounts from Moralis
-async function fetchWalletCoinAmounts(addresses: string[]): Promise<Record<string, number>> {
+async function fetchWalletCoinAmounts(_addresses: string[]): Promise<Record<string, number>> {
   try {
     const res = await fetch("/api/moralis");
     const data = (await res.json()) as Array<{ address: string; portfolio: { tokens?: Array<{ symbol: string; amount: string | number }> } }>;
@@ -31,11 +31,14 @@ async function fetchWalletCoinAmounts(addresses: string[]): Promise<Record<strin
 async function fetchCJETPrice(): Promise<number | null> {
   try {
     const res = await fetch("/api/dexscreener");
-    const data = await res.json();
+    const data = await res.json() as Array<{ priceUsd: string }>;
     // Dexscreener returns an array, get priceUsd from first item
-    if (Array.isArray(data) && data.length > 0 && typeof data[0].priceUsd === "string") {
-      const price = parseFloat(data[0].priceUsd);
-      if (!Number.isNaN(price)) return price;
+    if (Array.isArray(data) && data.length > 0) {
+      const first = data[0];
+      if (first && typeof first.priceUsd === "string") {
+        const price = parseFloat(first.priceUsd);
+        if (!Number.isNaN(price)) return price;
+      }
     }
     return null;
   } catch {
@@ -66,7 +69,7 @@ Good luck to everyone who gets involved.
   },
   // Add more sections here as needed, e.g.:
    {
-  title: "Chris Joslin's Wallet",
+  title: "Chris Joslin's Wallet:",
   content: `Show respect to the man who made history. Any $CJET or SOL sent here is reserved for Chris — he can claim it anytime.`,
   typingEffect: false,
   className: "prose prose-base dark:prose-invert mb-4 text-left text-white text-sm animate-fade-up animate-duration-1000 animate-delay-100 animate-ease-in-out",
@@ -75,7 +78,7 @@ Good luck to everyone who gets involved.
   walletTitle: "Give to Chris Joslin"
    },
    {
-  title: "Boards for Kids' Wallet",
+  title: "Boards for Kids' Wallet:",
   content: `This wallet funds skateboards for kids who can’t afford them. Once we pick the nonprofit partner, 100% of funds will go toward getting boards into kids’ hands.`,
   typingEffect: false,
   className: "prose prose-base dark:prose-invert mb-4 text-left text-white text-sm animate-fade-up animate-duration-1000 animate-delay-300 animate-ease-in-out",
@@ -84,7 +87,7 @@ Good luck to everyone who gets involved.
   walletTitle: "Give to Boards for Kids"
    },
    {
-  title: "Build Skateparks' Wallet",
+  title: "Build Skateparks' Wallet:",
   content: `Help build and fix skateparks around the world. This wallet will go to a nonprofit partner focused on creating more places to skate.`,
   typingEffect: false,
   className: "prose prose-base dark:prose-invert mb-4 text-left text-white text-sm animate-fade-up animate-duration-1000 animate-delay-400 animate-ease-in-out",
@@ -93,7 +96,7 @@ Good luck to everyone who gets involved.
   walletTitle: "Give to Build Skateparks"
    },
    {
-  title: "Skateboard Injury Relief's Wallet",
+  title: "Skateboard Injury Relief's Wallet:",
   content: `Help build and fix skateparks around the world. This wallet will go to a nonprofit partner focused on creating more places to skate.`,
   typingEffect: false,
   className: "prose prose-base dark:prose-invert mb-4 text-left text-white text-sm animate-fade-up animate-duration-1000 animate-delay-500 animate-ease-in-out",
@@ -103,18 +106,15 @@ Good luck to everyone who gets involved.
    },
 ];
 
-export function MarkdownBlock({ title, markdown, typingEffect, className, showTitle = false, titleClassName, titleTag = 'p', wallet, walletTitle, walletTitleClassName, showWalletButton = true }: {
+export function MarkdownBlock({ title, showTitle = true, markdown, typingEffect, className, wallet, walletTitle, walletTitleClassName }: {
   title?: string;
+  showTitle?: boolean;
   markdown: string;
   typingEffect: boolean;
   className?: string;
-  showTitle?: boolean;
-  titleClassName?: string;
-  titleTag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p';
   wallet?: string;
   walletTitle?: string;
   walletTitleClassName?: string;
-  showWalletButton?: boolean;
 }) {
   const [rawHtml, setRawHtml] = useState("");
   const [visibleHtml, setVisibleHtml] = useState("");
@@ -181,10 +181,11 @@ export function MarkdownBlock({ title, markdown, typingEffect, className, showTi
 
   return (
     <>
-      {/* Wallet section layout: H2 walletTitle, H3 balance, P content, H4 walletTitle, clipboard button */}
+      {/* H2: walletTitle */}
       {wallet && walletTitle && (
         <h2 className={walletTitleClassName ?? "text-2xl font-extrabold text-white mb-2"}>{walletTitle}</h2>
       )}
+      {/* H3: balance */}
       {wallet && coinPrice !== null && coinPrice > 0 && (
         <h3 className="text-lg font-semibold text-green-400 mb-2">
           {coinAmount !== null && coinAmount > 0
@@ -201,36 +202,41 @@ export function MarkdownBlock({ title, markdown, typingEffect, className, showTi
       )}
       {/* Content paragraph */}
       <div className={className} dangerouslySetInnerHTML={{ __html: visibleHtml }} />
-      {/* Removed H4 walletTitle and clipboard button from MarkdownBlock. Render these in parent if needed. */}
+      {/* H4: title */}
+      {title && showTitle && (
+        <h4 className="text-md font-bold text-white">{title}</h4>
+      )}
+      {/* Wallet address/copy button (only one) */}
+      {wallet && (
+        <div className="mt-2">
+          <WalletAddressButton address={wallet} />
+        </div>
+      )}
     </>
   );
 }
 
 // Named export for single section rendering
-export function Text({ title, showTitle = false, titleClassName, titleTag = 'p', walletTitle, walletTitleClassName, showWalletButton = true }: {
+export function Text({ title, showTitle = true, walletTitle, walletTitleClassName }: {
   title: string;
   showTitle?: boolean;
-  titleClassName?: string;
-  titleTag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p';
   walletTitle?: string;
   walletTitleClassName?: string;
-  showWalletButton?: boolean;
 }) {
   const section = markdownSections.find(s => s.title === title);
   if (!section) return null;
+  // Hide title for Project Description, show for wallets
+  const shouldShowTitle = title !== "Project Description" ? showTitle : false;
   return (
     <MarkdownBlock
       title={section.title}
+      showTitle={shouldShowTitle}
       markdown={section.content}
       typingEffect={section.typingEffect}
       className={section.className}
-      showTitle={showTitle}
-      titleClassName={titleClassName ?? section.titleClassName}
-      titleTag={titleTag}
       wallet={section.wallet}
       walletTitle={walletTitle ?? section.walletTitle}
       walletTitleClassName={walletTitleClassName}
-      showWalletButton={showWalletButton}
     />
   );
 }

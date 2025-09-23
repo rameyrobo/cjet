@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { Text } from "components/SiteText/MarkdownText";
 import { iconLibrary } from "../../resources/icons";
 
 const InstagramIcon = iconLibrary.instagram;

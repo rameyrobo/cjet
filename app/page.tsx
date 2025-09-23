@@ -4,11 +4,8 @@ import { Bowlby_One_SC } from "next/font/google"
 const bowlby = Bowlby_One_SC({ subsets: ["latin"], weight: "400" });
 import CjetCard from "components/CjetCard/CjetCard";
 import MediaCarousel from "components/MediaCarousel/MediaCarousel";
-import { Text, getWalletAddress } from "components/SiteText/MarkdownText";
+import { Text } from "components/SiteText/MarkdownText";
 import Song from "components/Song/Song";
-import WalletAddressButton from "components/Wallet/WalletAddressButton";
-import WalletAddressDisplay from "components/Wallet/WalletAddressDisplay";
-
 
 export const metadata: Metadata = {
   title: "$CJET - Mark Joslin's 360 flip over El Toro",
@@ -40,22 +37,18 @@ export default function Web() {
                 <Text title="Project Description" />
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="col-span-1">
-                    <Text title="Chris Joslin's Wallet" showTitle={true} titleTag="h2" />
-                    <WalletAddressDisplay title="Chris Joslin's Wallet" />
+                    <Text title="Chris Joslin's Wallet:" showTitle={true} />
                   </div>
                   <div className="col-span-1">
-                    <Text title="Boards for Kids' Wallet" showTitle={true} titleTag="h2" />
-                    <WalletAddressDisplay title="Boards for Kids' Wallet" />
+                    <Text title="Boards for Kids' Wallet:" showTitle={true} />
                   </div>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
                   <div className="col-span-1">
-                    <Text title="Build Skateparks' Wallet" showTitle={true} titleTag="h2" />
-                    <WalletAddressDisplay title="Build Skateparks' Wallet" />
+                    <Text title="Build Skateparks' Wallet:" showTitle={true} />
                   </div>
                   <div className="col-span-1">  
-                    <Text title="Skateboard Injury Relief's Wallet" showTitle={true} titleTag="h2" />
-                    <WalletAddressDisplay title="Skateboard Injury Relief's Wallet" />
+                    <Text title="Skateboard Injury Relief's Wallet:" showTitle={true} />
                   </div>
                 </div>
             </div>
@@ -67,22 +60,18 @@ export default function Web() {
             <Text title="Project Description" />
             <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
                 <div className="col-span-1">
-                <Text title="Chris Joslin's Wallet" showTitle={true} titleTag="h2" />
-                <WalletAddressDisplay title="Chris Joslin's Wallet" />
+                <Text title="Chris Joslin's Wallet:" showTitle={true} />
               </div>
                 <div className="col-span-1">
-                <Text title="Boards for Kids' Wallet" showTitle={true} titleTag="h2" />
-                <WalletAddressDisplay title="Boards for Kids' Wallet" />
+                <Text title="Boards for Kids' Wallet:" showTitle={true} />
               </div>
             </div>
             <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 mt-6">
                 <div className="col-span-1">
-                <Text title="Build Skateparks' Wallet" showTitle={true} titleTag="h2" />
-                <WalletAddressDisplay title="Build Skateparks' Wallet" />
+                <Text title="Build Skateparks' Wallet:" showTitle={true} />
               </div>
                 <div className="col-span-1">  
-                <Text title="Skateboard Injury Relief's Wallet" showTitle={true} titleTag="h2" />
-                <WalletAddressDisplay title="Skateboard Injury Relief's Wallet" />
+                <Text title="Skateboard Injury Relief's Wallet:" showTitle={true} />
               </div>
             </div>
           </div>
