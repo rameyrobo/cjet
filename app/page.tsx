@@ -3,9 +3,11 @@ import { Bowlby_One_SC } from "next/font/google"
 
 const bowlby = Bowlby_One_SC({ subsets: ["latin"], weight: "400" });
 import CjetCard from "components/CjetCard/CjetCard";
-import MarkdownSection from "components/MarkdownSection/MarkdownSection";
 import MediaCarousel from "components/MediaCarousel/MediaCarousel";
+import { Text, getWalletAddress } from "components/SiteText/MarkdownText";
 import Song from "components/Song/Song";
+import WalletAddressButton from "components/Wallet/WalletAddressButton";
+import WalletAddressDisplay from "components/Wallet/WalletAddressDisplay";
 
 
 export const metadata: Metadata = {
@@ -20,11 +22,10 @@ export const metadata: Metadata = {
 
 export default function Web() {
   return (
-    <main className="min-h-screen bg-gray-900 flex items-center justify-center overflow-x-hidden">
-      <div className="w-full max-w-full grid grid-cols-1 max-h-dvh mt-12 lg:mt-0 lg:grid-cols-7 gap-0 lg:gap-8 items-start py-6">
-        <div className="flex flex-col items-center justify-center lg:justify-center lg:h-full px-4 col-span-3 lg:col-span-2">
+    <main className="min-h-screen bg-gray-900 flex items-center justify-center overflow-x-hidden pb-16">
+      <div className="w-full max-w-full grid grid-cols-1 max-h-dvh mt-12 lg:mt-0 lg:grid-cols-8 gap-0 lg:gap-8 items-start py-6">
+        <div className="flex flex-col items-center justify-center lg:mt-16 xl:mt-0 lg:justify-start xl:justify-center lg:h-full px-4 xl:px-6 col-span-3 lg:col-span-2">
           <h1 className={`h1Size font-extrabold text-gray-900 dark:text-white mb-6 animate-fade-up animate-duration-1000 animate-delay-400 animate-ease-in-out ${bowlby.className} italic!`}>$CJET</h1>
-          
           <CjetCard />
           <div className="mt-8 w-full max-w-sm lg:ml-0">
             <div className="hidden lg:block">
@@ -32,18 +33,58 @@ export default function Web() {
             </div>
           </div>
         </div>
-        <div className="flex items-start lg:items-center justify-start px-9 lg:px-4 col-span-3 relative h-full">
+        <div className="flex items-start xl:items-center justify-start px-9 lg:px-4 col-span-3 relative h-full">
           {/* Media carousel on the right */}
           <div className="max-h-dvh">
-            <div className="block lg:hidden">
-            <MarkdownSection />
+            <div className="flex flex-col items-start justify-start px-4 overflow-scroll lg:hidden animate-fade-up animate-duration-1000 animate-delay-400 animate-ease-in-out">
+                <Text title="Project Description" />
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="col-span-1">
+                    <Text title="Chris Joslin's Wallet" showTitle={true} titleTag="h2" />
+                    <WalletAddressDisplay title="Chris Joslin's Wallet" />
+                  </div>
+                  <div className="col-span-1">
+                    <Text title="Boards for Kids' Wallet" showTitle={true} titleTag="h2" />
+                    <WalletAddressDisplay title="Boards for Kids' Wallet" />
+                  </div>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="col-span-1">
+                    <Text title="Build Skateparks' Wallet" showTitle={true} titleTag="h2" />
+                    <WalletAddressDisplay title="Build Skateparks' Wallet" />
+                  </div>
+                  <div className="col-span-1">  
+                    <Text title="Skateboard Injury Relief's Wallet" showTitle={true} titleTag="h2" />
+                    <WalletAddressDisplay title="Skateboard Injury Relief's Wallet" />
+                  </div>
+                </div>
             </div>
             <MediaCarousel />
           </div>
         </div>
-        <div className="items-center justify-start lg:justify-center px-8 lg:pt-7 lg:pt-0 col-span-2 relative h-full hidden lg:flex">
-          <div className="h-dvh">
-            <MarkdownSection />
+        <div className="items-center justify-start mt-14 lg:justify-center px-8 lg:pt-7 lg:pt-0 col-span-3 relative h-full hidden lg:flex">
+          <div className="h-full">
+            <Text title="Project Description" />
+            <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+                <div className="col-span-1">
+                <Text title="Chris Joslin's Wallet" showTitle={true} titleTag="h2" />
+                <WalletAddressDisplay title="Chris Joslin's Wallet" />
+              </div>
+                <div className="col-span-1">
+                <Text title="Boards for Kids' Wallet" showTitle={true} titleTag="h2" />
+                <WalletAddressDisplay title="Boards for Kids' Wallet" />
+              </div>
+            </div>
+            <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 mt-6">
+                <div className="col-span-1">
+                <Text title="Build Skateparks' Wallet" showTitle={true} titleTag="h2" />
+                <WalletAddressDisplay title="Build Skateparks' Wallet" />
+              </div>
+                <div className="col-span-1">  
+                <Text title="Skateboard Injury Relief's Wallet" showTitle={true} titleTag="h2" />
+                <WalletAddressDisplay title="Skateboard Injury Relief's Wallet" />
+              </div>
+            </div>
           </div>
         </div>
       </div>

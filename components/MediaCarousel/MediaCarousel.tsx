@@ -115,7 +115,7 @@ export default function MediaCarousel() {
         &#60;
       </button>
       {/* Media */}
-      <div className="w-full flex items-start justify-center animate-duration-500 animate-delay-200 animate-ease-in-out">
+      <div className="w-full flex items-start mt-12 lg:mt-0 justify-center animate-duration-500 animate-delay-200 animate-ease-in-out">
         {current.type === "image" ? (
           <Image
             key={current.src}

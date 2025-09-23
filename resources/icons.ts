@@ -6,6 +6,11 @@ import {
  } from "react-icons/fa";
 
 import { 
+  HiOutlineClipboardCopy,
+} 
+from "react-icons/hi";
+
+import { 
   HiMiniSpeakerWave,
   HiMiniSpeakerXMark, 
 } from "react-icons/hi2";
@@ -16,9 +21,10 @@ import {
 } from "react-icons/fa6";
 
 export const iconLibrary: Record<string, IconType> = {
+  clipboard: HiOutlineClipboardCopy,
+  instagram: FaInstagram,
   speakeron: HiMiniSpeakerWave,
   speakeroff: HiMiniSpeakerXMark,
-  instagram: FaInstagram,
   telegram: FaTelegramPlane,
   twitter: FaSquareXTwitter,
 };
