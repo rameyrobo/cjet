@@ -31,21 +31,25 @@ const media = [
     alt: "Joslin cheers to you",
     width: 1080,
     height: 1890,
+    poster: "/assets/cheers-poster.jpg",
   }, 
   {
     type: "video",
     src: "/assets/private-jet.mp4",
     alt: "Joslin in a private jet",
+    poster: "/assets/private-jet-poster.jpg",
   }, 
   {
     type: "video",
     src: "/assets/music_video.mp4",
     alt: "Chris Joslin's music video",
+    poster: "/assets/music_video-poster.jpg",
   }, 
   {
     type: "video",
     src: "/assets/limo.mp4",
     alt: "Chris Joslin in a limo",
+    poster: "/assets/limo-poster.jpg",
   },
 ];
 
@@ -147,12 +151,13 @@ export default function MediaCarousel() {
               height={current.height}
               width={current.width}
               src={current.src}
+              poster={current.poster}
               autoPlay
               loop={false}
               muted={isMuted}
               playsInline
               controls={false}
-              className="object-contain rounded-2xl max-h-[100vh] w-lvw animate-duration-500 animate-delay-200 animate-ease-in-out"
+              className="object-contain rounded-2xl max-h-[100vh] w-lvw animate-fade animate-duration-500 animate-delay-0 animate-ease-in-out"
               onEnded={handleVideoEnd}
               onClick={handleVideoTap}
             />
