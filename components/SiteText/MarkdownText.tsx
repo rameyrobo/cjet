@@ -204,13 +204,13 @@ export function MarkdownBlock({ title, showTitle = true, markdown, typingEffect,
 
   return (
     <>
-      {/* H3: walletTitle */}
+      {/* H2: walletTitle */}
       {wallet && walletTitle && (
-        <h3 className={walletTitleClassName ?? "text-2xl font-extrabold text-white mb-2"}>{walletTitle}</h3>
+        <h2 className={walletTitleClassName ?? "text-2xl font-extrabold text-white mb-2"}>{walletTitle}</h2>
       )}
       {/* H3: balance */}
       {wallet && coinPrice !== null && coinPrice > 0 && (
-        <h4 className="text-lg font-semibold text-green-400 mb-2">
+        <h3 className="text-lg font-semibold text-green-400 mb-2">
           {coinAmount !== null && coinAmount > 0
             ? `${coinAmount.toLocaleString(undefined, { maximumFractionDigits: 2 })} $CJET`
             : '0 $CJET'}
@@ -221,7 +221,7 @@ export function MarkdownBlock({ title, showTitle = true, markdown, typingEffect,
                   : `$${(coinAmount * coinPrice).toLocaleString(undefined, { maximumFractionDigits: 6 })} USD`)
               : '$0 USD'}
           )</span>
-        </h4>
+        </h3>
       )}
       {/* Content paragraph with fade and Read More */}
   <div className={className + (shouldShowReadMore && !expanded ? ' relative max-h-30 overflow-hidden' : '')} style={shouldShowReadMore && !expanded ? { transition: 'max-height 0.5s', WebkitMaskImage: 'linear-gradient(180deg, #000 70%, transparent 100%)', maskImage: 'linear-gradient(180deg, #000 70%, transparent 100%)' } : {}}>
@@ -239,9 +239,9 @@ export function MarkdownBlock({ title, showTitle = true, markdown, typingEffect,
           </button>
         </div>
       )}
-      {/* H5: title with Solscan link and icon */}
+      {/* H4: title with Solscan link and icon */}
       {title && showTitle && wallet && (
-        <h5 className="text-md font-bold text-white flex items-center gap-2 group relative">
+        <h4 className="text-md font-bold text-white flex items-center gap-2 group relative">
           <a
             href={`https://solscan.io/account/${wallet}`}
             target="_blank"
@@ -254,7 +254,7 @@ export function MarkdownBlock({ title, showTitle = true, markdown, typingEffect,
               {`${title.replace(/:$/, '')} on Solscan`}
             </span>
           </a>
-        </h5>
+        </h4>
       )}
       {/* Wallet address/copy button (only one) */}
       {wallet && (
