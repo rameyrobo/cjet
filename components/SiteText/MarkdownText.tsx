@@ -66,7 +66,7 @@ Years later, he came back stronger, and finally got his revenge. He landed the t
   },
   {
     title: "Mission Statement",
-    content: `**It is more than just a meme coin. It is a project with a mission:**
+    content: `***It is more than just a meme coin. It is a project with a mission:***
 
 **Support Skaters:** Public wallets provide help for injured skaters, free boards for kids, and funding for new skateparks.
 
@@ -77,8 +77,8 @@ Years later, he came back stronger, and finally got his revenge. He landed the t
 One percent of the founder’s personal wallet is sent each month to the three main community funds so that support continues to flow back into skateboarding.
 `,
     typingEffect: false,
-    className: "prose prose-lg dark:prose-invert mt-6 mb-4 pl-4 text-left text-white",
-    titleClassName: "text-2xl font-extrabold text-white mb-4 font-extrabold",
+    className: "prose prose-lg dark:prose-invert mt-6 mb-4 pl-4 text-left text-white animate-fade-up animate-duration-1000 animate-delay-150 animate-ease-in-out",
+    titleClassName: "text-2xl font-extrabold text-white mb-4 font-extrabold ",
   },
   // Add more sections here as needed, e.g.:
    {
