@@ -134,6 +134,7 @@ export function MarkdownBlock({ title, showTitle = true, markdown, typingEffect,
 }) {
   const [rawHtml, setRawHtml] = useState("");
   const [visibleHtml, setVisibleHtml] = useState("");
+  const [expanded, setExpanded] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [coinAmount, setCoinAmount] = useState<number | null>(null);
   const [coinPrice, setCoinPrice] = useState<number | null>(null);
@@ -195,15 +196,21 @@ export function MarkdownBlock({ title, showTitle = true, markdown, typingEffect,
     });
   }, []);
 
+  // Detect if content has more than one paragraph
+  const paragraphCount = (rawHtml.match(/<p /g) || []).length;
+  // Only show Read More and fade on screens >= 640px
+  const isLargeViewport = typeof window !== 'undefined' ? window.innerWidth >= 640 : false;
+  const shouldShowReadMore = wallet && paragraphCount > 1 && isLargeViewport;
+
   return (
     <>
-      {/* H2: walletTitle */}
+      {/* H3: walletTitle */}
       {wallet && walletTitle && (
-        <h2 className={walletTitleClassName ?? "text-2xl font-extrabold text-white mb-2"}>{walletTitle}</h2>
+        <h3 className={walletTitleClassName ?? "text-2xl font-extrabold text-white mb-2"}>{walletTitle}</h3>
       )}
       {/* H3: balance */}
       {wallet && coinPrice !== null && coinPrice > 0 && (
-        <h3 className="text-lg font-semibold text-green-400 mb-2">
+        <h4 className="text-lg font-semibold text-green-400 mb-2">
           {coinAmount !== null && coinAmount > 0
             ? `${coinAmount.toLocaleString(undefined, { maximumFractionDigits: 2 })} $CJET`
             : '0 $CJET'}
@@ -214,13 +221,27 @@ export function MarkdownBlock({ title, showTitle = true, markdown, typingEffect,
                   : `$${(coinAmount * coinPrice).toLocaleString(undefined, { maximumFractionDigits: 6 })} USD`)
               : '$0 USD'}
           )</span>
-        </h3>
+        </h4>
       )}
-      {/* Content paragraph */}
-      <div className={className} dangerouslySetInnerHTML={{ __html: visibleHtml }} />
-      {/* H4: title with Solscan link and icon */}
+      {/* Content paragraph with fade and Read More */}
+  <div className={className + (shouldShowReadMore && !expanded ? ' relative max-h-30 overflow-hidden' : '')} style={shouldShowReadMore && !expanded ? { transition: 'max-height 0.5s', WebkitMaskImage: 'linear-gradient(180deg, #000 70%, transparent 100%)', maskImage: 'linear-gradient(180deg, #000 70%, transparent 100%)' } : {}}>
+        <div dangerouslySetInnerHTML={{ __html: visibleHtml }} />
+      </div>
+      {shouldShowReadMore && !expanded && (
+        <div className="flex justify-center mt-[-1.5rem] mb-2">
+          <button
+            type="button"
+            className="bg-[#3dff00] text-black font-bold px-4 py-2 rounded-full shadow-lg hover:bg-[#95ff00] transition-colors border-2 border-black cursor-pointer"
+            style={{ opacity: 1 }}
+            onClick={() => setExpanded(true)}
+          >
+            Read More
+          </button>
+        </div>
+      )}
+      {/* H5: title with Solscan link and icon */}
       {title && showTitle && wallet && (
-        <h4 className="text-md font-bold text-white flex items-center gap-2 group relative">
+        <h5 className="text-md font-bold text-white flex items-center gap-2 group relative">
           <a
             href={`https://solscan.io/account/${wallet}`}
             target="_blank"
@@ -233,7 +254,7 @@ export function MarkdownBlock({ title, showTitle = true, markdown, typingEffect,
               {`${title.replace(/:$/, '')} on Solscan`}
             </span>
           </a>
-        </h4>
+        </h5>
       )}
       {/* Wallet address/copy button (only one) */}
       {wallet && (
