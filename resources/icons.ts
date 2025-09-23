@@ -20,9 +20,15 @@ import {
     FaSquareXTwitter,
 } from "react-icons/fa6";
 
+import { 
+  RxOpenInNewWindow, 
+} from "react-icons/rx";
+
+
 export const iconLibrary: Record<string, IconType> = {
   clipboard: HiOutlineClipboardCopy,
   instagram: FaInstagram,
+  openinnewwindow: RxOpenInNewWindow,
   speakeron: HiMiniSpeakerWave,
   speakeroff: HiMiniSpeakerXMark,
   telegram: FaTelegramPlane,
