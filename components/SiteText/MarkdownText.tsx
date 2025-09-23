@@ -1,6 +1,7 @@
 "use client";
 import { marked } from "marked";
 import React, { useEffect, useState } from "react";
+import { FiExternalLink } from "react-icons/fi";
 import WalletAddressButton from "components/Wallet/WalletAddressButton";
 
 // Helper to fetch wallet coin amounts from Moralis
@@ -57,7 +58,15 @@ Years later, he came back stronger, and finally got his revenge. He landed the t
 
 **CJET** is a Solana based community token created to celebrate Chris Joslin’s historic 360 flip down El Toro and give back to skateboarding.
 
-**It is more than just a meme coin. It is a project with a mission:**
+***All wallets are public and viewable on Solscan so the community can verify every transaction. CJET is built on trust and a clear goal to put money back into skateboarding.***
+`,
+    typingEffect: false,
+    className: "prose prose-lg dark:prose-invert mb-8 text-left text-white",
+    titleClassName: "text-2xl font-extrabold text-white mb-4 font-extrabold",
+  },
+  {
+    title: "Mission Statement",
+    content: `**It is more than just a meme coin. It is a project with a mission:**
 
 **Support Skaters:** Public wallets provide help for injured skaters, free boards for kids, and funding for new skateparks.
 
@@ -66,17 +75,15 @@ Years later, he came back stronger, and finally got his revenge. He landed the t
 **Grow the Culture:** CJET is about connecting skaters and crypto investors so everyone can benefit together.
 
 One percent of the founder’s personal wallet is sent each month to the three main community funds so that support continues to flow back into skateboarding.
-
-All wallets are public and viewable on Solscan so the community can verify every transaction. CJET is built on trust and a clear goal to put money back into skateboarding.
 `,
     typingEffect: false,
-    className: "prose prose-lg dark:prose-invert mb-8 text-left text-white",
+    className: "prose prose-lg dark:prose-invert mt-6 mb-4 pl-4 text-left text-white",
     titleClassName: "text-2xl font-extrabold text-white mb-4 font-extrabold",
   },
   // Add more sections here as needed, e.g.:
    {
   title: "Chris Joslin's Wallet:",
-  content: `Show respect to the man who made history. Any $CJET or SOL sent here is reserved for Chris — he can claim it anytime.`,
+  content: `A tribute wallet for the skater who inspired this project. Any CJET or SOL sent here is reserved for Chris Joslin — he can claim it anytime. This is the community’s way of thanking him for risking it all and landing the most iconic 360 flip in history.`,
   typingEffect: false,
   className: "prose prose-base dark:prose-invert mb-4 text-left text-white text-sm animate-fade-up animate-duration-1000 animate-delay-100 animate-ease-in-out",
   titleClassName: "text-xl font-extrabold text-white mb-2 font-bold animate-fade-up animate-duration-1000 animate-delay-150 animate-ease-in-out",
@@ -85,7 +92,7 @@ All wallets are public and viewable on Solscan so the community can verify every
    },
    {
   title: "Boards for Kids' Wallet:",
-  content: `This wallet funds skateboards for kids who can’t afford them. Once we pick the nonprofit partner, 100% of funds will go toward getting boards into kids’ hands.`,
+  content: `Funds skateboards for kids who cannot afford them. All funds go to Boards for Bros, a nonprofit that refurbishes and donates skateboards to kids.`,
   typingEffect: false,
   className: "prose prose-base dark:prose-invert mb-4 text-left text-white text-sm animate-fade-up animate-duration-1000 animate-delay-300 animate-ease-in-out",
   titleClassName: "text-xl font-extrabold text-white mb-2 animate-fade-up animate-duration-1000 animate-delay-350 animate-ease-in-out",
@@ -94,7 +101,7 @@ All wallets are public and viewable on Solscan so the community can verify every
    },
    {
   title: "Build Skateparks' Wallet:",
-  content: `Help build and fix skateparks around the world. This wallet will go to a nonprofit partner focused on creating more places to skate.`,
+  content: `Supports building and repairing skateparks around the world. Funds go to The Skatepark Project, an organization dedicated to creating safe, accessible skateparks.`,
   typingEffect: false,
   className: "prose prose-base dark:prose-invert mb-4 text-left text-white text-sm animate-fade-up animate-duration-1000 animate-delay-400 animate-ease-in-out",
   titleClassName: "text-xl font-extrabold text-white mb-2 animate-fade-up animate-duration-1000 animate-delay-450 animate-ease-in-out",
@@ -103,11 +110,9 @@ All wallets are public and viewable on Solscan so the community can verify every
    },
    {
   title: "Skateboard Injury Relief's Wallet:",
-  content: `
-- **What It Is:** A dedicated wallet that anyone can donate $CJET or SOL to.
-- **How It Works:** Each month, skaters can submit GoFundMe links.
-- **Distribution:** At the end of the month, funds are evenly split and sent to those skaters go fund me pages.
-- **Transparency:** All transactions posted publicly on Solscan and announced on Telegram.
+  content: `Helps skaters who get hurt and do not have health insurance. Each month, the community submits GoFundMe links for injured skaters, and at the end of the month, funds are split evenly between verified campaigns.
+
+At the start of every month, one percent of the founder’s personal wallet is automatically split between the three community wallets — Boards for Kids, Build Skateparks, and Injury Relief — ensuring fresh support continues to flow into skateboarding. At the end of each month, the wallets are drained and distributed, and the cycle resets.
   `,
   typingEffect: false,
   className: "prose prose-base dark:prose-invert mb-4 text-left text-white text-sm animate-fade-up animate-duration-1000 animate-delay-500 animate-ease-in-out",
@@ -213,15 +218,32 @@ export function MarkdownBlock({ title, showTitle = true, markdown, typingEffect,
       )}
       {/* Content paragraph */}
       <div className={className} dangerouslySetInnerHTML={{ __html: visibleHtml }} />
-      {/* H4: title */}
-      {title && showTitle && (
-        <h4 className="text-md font-bold text-white">{title}</h4>
+      {/* H4: title with Solscan link and icon */}
+      {title && showTitle && wallet && (
+        <h4 className="text-md font-bold text-white flex items-center gap-2 group relative">
+          <a
+            href={`https://solscan.io/account/${wallet}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:underline flex items-center gap-1"
+          >
+            {title}
+            <FiExternalLink className="inline-block text-lg ml-1" />
+            <span className="absolute left-1/2 -translate-x-1/2 top-full mt-2 z-50 px-3 py-2 rounded bg-black text-white text-xs whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-lg">
+              {`${title.replace(/:$/, '')} on Solscan`}
+            </span>
+          </a>
+        </h4>
       )}
       {/* Wallet address/copy button (only one) */}
       {wallet && (
         <div className="mt-2">
           <WalletAddressButton address={wallet} />
         </div>
+      )}
+      {/* Fallback for non-wallet titles */}
+      {title && showTitle && !wallet && (
+        <h4 className="text-md font-bold text-white">{title}</h4>
       )}
     </>
   );
@@ -236,8 +258,8 @@ export function Text({ title, showTitle = true, walletTitle, walletTitleClassNam
 }) {
   const section = markdownSections.find(s => s.title === title);
   if (!section) return null;
-  // Hide title for Project Description, show for wallets
-  const shouldShowTitle = title !== "Project Description" ? showTitle : false;
+  // Hide title for Project Description and Mission Statement, show for wallets
+  const shouldShowTitle = (title !== "Project Description" && title !== "Mission Statement") ? showTitle : false;
   return (
     <MarkdownBlock
       title={section.title}
