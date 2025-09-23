@@ -127,7 +127,7 @@ export default function MediaCarousel() {
             style={{ objectFit: "contain" }}
           />
         ) : (
-          <div className="relative w-full flex flex-col items-center">
+          <div className="relative w-full flex flex-col items-start">
             {/* Speaker icon button */}
             <button
               type="button"

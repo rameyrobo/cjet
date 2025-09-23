@@ -55,13 +55,19 @@ const markdownSections = [
 
 Years later, he came back stronger, and finally got his revenge. He landed the trick, earned the cover of Thrasher Magazine, and his kids got to watch him make history.
 
-This coin, **$CJET**, is a tribute to that moment and to the biggest 360 flip ever landed.
+**CJET** is a Solana based community token created to celebrate Chris Joslin’s historic 360 flip down El Toro and give back to skateboarding.
 
-The goal is simple: help skateboarders discover cryptocurrency, have fun, and maybe build a community along the way.
+**It is more than just a meme coin. It is a project with a mission:**
 
-**$CJET** was created by **[Shrimpdaddy](https://www.instagram.com/shrimpdaddy/)**, a skateboarder and content creator. He is holding his bag and is not selling.
+**Support Skaters:** Public wallets provide help for injured skaters, free boards for kids, and funding for new skateparks.
 
-Good luck to everyone who gets involved.
+**Transparency First:** The founder’s personal wallet is public and tracked with one percent of holdings contributed every month to the community wallets.
+
+**Grow the Culture:** CJET is about connecting skaters and crypto investors so everyone can benefit together.
+
+One percent of the founder’s personal wallet is sent each month to the three main community funds so that support continues to flow back into skateboarding.
+
+All wallets are public and viewable on Solscan so the community can verify every transaction. CJET is built on trust and a clear goal to put money back into skateboarding.
 `,
     typingEffect: false,
     className: "prose prose-lg dark:prose-invert mb-8 text-left text-white",
@@ -97,7 +103,12 @@ Good luck to everyone who gets involved.
    },
    {
   title: "Skateboard Injury Relief's Wallet:",
-  content: `Help build and fix skateparks around the world. This wallet will go to a nonprofit partner focused on creating more places to skate.`,
+  content: `
+- **What It Is:** A dedicated wallet that anyone can donate $CJET or SOL to.
+- **How It Works:** Each month, skaters can submit GoFundMe links.
+- **Distribution:** At the end of the month, funds are evenly split and sent to those skaters go fund me pages.
+- **Transparency:** All transactions posted publicly on Solscan and announced on Telegram.
+  `,
   typingEffect: false,
   className: "prose prose-base dark:prose-invert mb-4 text-left text-white text-sm animate-fade-up animate-duration-1000 animate-delay-500 animate-ease-in-out",
   titleClassName: "text-xl font-extrabold text-white mb-2 animate-fade-up animate-duration-1000 animate-delay-550 animate-ease-in-out",
