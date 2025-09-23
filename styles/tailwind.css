@@ -21,7 +21,7 @@
 }
 
 .h1Size {
-  font-size: clamp(4rem, -1.185rem + 29.63vw, 6.5rem);
+  font-size: clamp(5.25rem, -0.548rem + 26.506vw, 9.375rem);
   line-height: .75;
   font-weight: 100;
   color: #3dff00;
@@ -30,8 +30,8 @@
 ul {
   list-style: outside;
 }
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1024px) {
   .h1Size {
-    font-size: clamp(2.938rem, -0.544rem + 7.254vw, 6.438rem);
+    font-size: clamp(3.375rem, -0.625rem + 6.25vw, 6.875rem);
   }
 }
