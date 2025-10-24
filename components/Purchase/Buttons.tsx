@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { FiCopy, FiCheck } from "react-icons/fi";
+import { FiCheck, FiCopy } from "react-icons/fi";
 
 export default function PurchaseButtons() {
   const [copied, setCopied] = useState(false);
